@@ -1,24 +1,34 @@
 <template>
   <div id="app">
-    <Piece content="Welcome to Your Vue.js App" font="Oswald" />
+    <Piece content="Welcome to Your Vue.js App" :font="font" />
   </div>
 </template>
 
 <script>
 import Piece from "./components/Piece.vue";
-
 var WebFont = require("webfontloader");
-
-WebFont.load({
-  google: {
-    families: ["Oswald"]
-  }
-});
 
 export default {
   name: "app",
   components: {
     Piece
+  },
+  data() {
+    return {
+      font: "Oswald"
+    };
+  },
+  methods: {
+    downloadFont(font) {
+      WebFont.load({
+        google: {
+          families: [font]
+        }
+      });
+    }
+  },
+  mounted() {
+    this.downloadFont(this.font);
   }
 };
 </script>
