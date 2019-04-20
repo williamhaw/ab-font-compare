@@ -3,6 +3,7 @@
     v-bind:style="{ fontFamily: font }"
     v-model="content"
     class="piece"
+    spellcheck="false"
   />
 </template>
 
