@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Piece content="Welcome to Your Vue.js App" :font="font" />
+    <Piece :content="content" :font="fonts[0]" />
+    <Piece :content="content" :font="fonts[1]" />
   </div>
 </template>
 
@@ -15,20 +16,21 @@ export default {
   },
   data() {
     return {
-      font: "Oswald"
+      fonts: ["Oswald", "Raleway"],
+      content: "Welcome to Your Vue.js App"
     };
   },
   methods: {
-    downloadFont(font) {
+    downloadFont(fonts) {
       WebFont.load({
         google: {
-          families: [font]
+          families: fonts
         }
       });
     }
   },
   mounted() {
-    this.downloadFont(this.font);
+    this.downloadFont(this.fonts);
   }
 };
 </script>
